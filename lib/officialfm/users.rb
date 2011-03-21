@@ -6,9 +6,9 @@ module OfficialFM
     # @param [String] search_param: a search parameter (eg. name of the user)
     # @param [Integer] limit (50) limit per page
     # @return [Hashie::Mash] User list
-    def users(search_param, limit=nil)
+    def users(search_param, options={})
       response = connection.get do |req|
-        req.url "/search/users/#{search_param}", :api_max_responses => limit
+        req.url "/search/users/#{search_param}", :api_max_responses => options[:limit]
       end
       response.body
     end
@@ -30,10 +30,10 @@ module OfficialFM
     # @param [Integer] limit (50) limit per page
     # @param [Bool] embed (false) should embed codes be included in the response
     # @return [Hashie::Mash] Track list
-    def user_tracks(user_id, limit=nil, embed=nil)
+    def user_tracks(user_id, options={})
       response = connection.get do |req|
         req.url "/user/#{user_id}/tracks",
-          :api_embed_codes => embed, :api_max_responses => limit
+          :api_embed_codes => options[:embed], :api_max_responses => options[:limit]
       end
       response.body
     end
@@ -44,10 +44,10 @@ module OfficialFM
     # @param [Integer] limit (50) limit per page
     # @param [Bool] embed (false) should embed codes be included in the response
     # @return [Hashie::Mash] Playlist list
-    def user_playlists(user_id, limit=nil, embed=nil)
+    def user_playlists(user_id, options={})
       response = connection.get do |req|
         req.url "/user/#{user_id}/playlists",
-          :api_embed_codes => embed, :api_max_responses => limit
+          :api_embed_codes => options[:embed], :api_max_responses => options[:limit]
       end
       response.body
     end
@@ -57,10 +57,10 @@ module OfficialFM
     # @param [String] user_id: id or login
     # @param [Integer] limit (50) limit per page
     # @return [Hashie::Mash] User list
-    def user_contacts(user_id, limit=nil)
+    def user_contacts(user_id, options={})
       response = connection.get do |req|
         req.url "/user/#{user_id}/contacts",
-          :api_max_responses => limit
+          :api_max_responses => options[:limit]
       end
       response.body
     end
@@ -70,10 +70,10 @@ module OfficialFM
     # @param [String] user_id: id or login
     # @param [Integer] limit (50) limit per page
     # @return [Hashie::Mash] User list
-    def user_subscribers(user_id, limit=nil)
+    def user_subscribers(user_id, options={})
       response = connection.get do |req|
         req.url "/user/#{user_id}/subscribers",
-          :api_max_responses => limit
+          :api_max_responses => options[:limit]
       end
       response.body
     end
@@ -83,10 +83,10 @@ module OfficialFM
     # @param [String] user_id: id or login
     # @param [Integer] limit (50) limit per page
     # @return [Hashie::Mash] User list
-    def user_subscriptions(user_id, limit=nil)
+    def user_subscriptions(user_id, options={})
       response = connection.get do |req|
         req.url "/user/#{user_id}/subscriptions",
-          :api_max_responses => limit
+          :api_max_responses => options[:limit]
       end
       response.body
     end
