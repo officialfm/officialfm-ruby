@@ -1,0 +1,29 @@
+## Temporary
+test
+
+## MAC OS
+.DS_Store
+
+## TEXTMATE
+*.tmproj
+tmtags
+
+## EMACS
+*~
+\#*
+.\#*
+
+## VIM
+*.swp
+
+## PROJECT::GENERAL
+coverage
+rdoc
+pkg
+*.gem
+.yardopts
+.yardoc
+.bundle
+Gemfile.lock
+
+## PROJECT::SPECIFIC
