@@ -1,7 +1,7 @@
 require 'forwardable'
 
 # Note: this gem only supports the Simple API, since the Advanced API
-# is still in development...
+# is still in development
 
 module OfficialFM
   class Client
@@ -17,6 +17,12 @@ module OfficialFM
 
     def initialize(options={})
       @api_key = options[:api_key] || OfficialFM.api_key
+      # Note: Although the default of the API is to return XML, I think
+      # json is more appropriate in the Ruby world
+      
+      # Note: I really don't understand how js_callback_function works,
+      # so I'm not exposing it here. (Is it for AJAX client-side requests?)
+      @format = options[:format] || :json
       connection.basic_auth(@api_key)
     end
 
