@@ -1,6 +1,17 @@
 module OfficialFM
   module Users
 
+    # Search for users
+    #
+    # @param [String] search_param: a search parameter (eg. name of the user)
+    # @return [Hashie::Mash] User list
+    def search(search_param)
+      response = connection.get do |req|
+        req.url "/search/users/#{search_param}/tracks", :key => @api_key
+      end
+      response.body.users
+    end
+
     # Retrieve information about a specific user
     #
     # @param [String] user_id: id or login

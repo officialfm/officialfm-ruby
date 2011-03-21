@@ -1,6 +1,17 @@
 module OfficialFM
   module Tracks
   
+    # Search for tracks
+    #
+    # @param [String] search_param: a search parameter (eg. name of the track)
+    # @return [Hashie::Mash] Track list
+    def search(search_param)
+      response = connection.get do |req|
+        req.url "/search/tracks/#{search_param}/tracks", :key => @api_key
+      end
+      response.body.tracks
+    end
+  
     # Retrieve information about a specific track
     #
     # Note: http://official.fm/developers/simple_api#track_show

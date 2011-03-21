@@ -1,6 +1,17 @@
 module OfficialFM
   module Playlists
   
+    # Search for playlists
+    #
+    # @param [String] search_param: a search parameter (eg. name of the playlist)
+    # @return [Hashie::Mash] Playlist list
+    def search(search_param)
+      response = connection.get do |req|
+        req.url "/search/playlists/#{search_param}/tracks", :key => @api_key
+      end
+      response.body.playlists
+    end
+  
     # Retrieve information about a specific playlist
     #
     # @param [String] track_id: id
