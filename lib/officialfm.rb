@@ -4,17 +4,14 @@ require 'faraday_middleware'
 
 directory = File.expand_path(File.dirname(__FILE__))
 
-module Gowalla
+module OfficialFM
 
   class << self
     attr_accessor :api_key
-    attr_accessor :username
-    attr_accessor :password
-    attr_accessor :api_secret
     attr_accessor :test_mode
 
     # Configures default credentials easily
-    # @yield [api_key, username, password]
+    # @yield [api_key]
     def configure
       yield self
       true
@@ -25,12 +22,9 @@ module Gowalla
     end
   end
 
-  require 'gowalla/spots'
-  require 'gowalla/items'
-  require 'gowalla/trips'
-  require 'gowalla/checkins'
-  require 'gowalla/flags'
-  require 'gowalla/users'
-  require 'gowalla/client'
+  require 'officialfm/users'
+  require 'officialfm/tracks'
+  require 'officialfm/playlists'
+  require 'officialfm/client'
 
 end

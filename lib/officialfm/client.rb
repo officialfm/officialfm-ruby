@@ -23,21 +23,28 @@ module OfficialFM
       # Note: I really don't understand how js_callback_function works,
       # so I'm not exposing it here. (Is it for AJAX client-side requests?)
       @format = options[:format] || :json
-      connection.basic_auth(@api_key)
+      connection
     end
 
     # Raw HTTP connection, either Faraday::Connection
     #
     # @return [Faraday::Connection]
     def connection
-      params = {}
-      params[:access_token] = @access_token if @access_token
+      params = {:key => @api_key, :format => @format}
       @connection ||= Faraday::Connection.new(:url => api_url, :params => params, :headers => default_headers) do |builder|
         builder.adapter Faraday.default_adapter
         builder.use Faraday::Response::ParseJson
         builder.use Faraday::Response::Mashify
       end
 
+    end
+    
+    # @private
+    def default_headers
+      headers = {
+        :accept =>  'application/json',
+        :user_agent => 'officialfm Ruby gem'
+      }
     end
 
     # Provides the URL for accessing the API
@@ -46,4 +53,5 @@ module OfficialFM
     def api_url
       "http://api.official.fm"
     end
+  end
 end

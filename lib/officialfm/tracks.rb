@@ -7,7 +7,7 @@ module OfficialFM
     # @return [Hashie::Mash] Track list
     def search(search_param)
       response = connection.get do |req|
-        req.url "/search/tracks/#{search_param}/tracks", :key => @api_key
+        req.url "/search/tracks/#{search_param}"
       end
       response.body.tracks
     end
@@ -22,7 +22,7 @@ module OfficialFM
     # @return [Hashie::Mash] Track
     def show(track_id, api_embed_codes=nil)
       response = connection.get do |req|
-        req.url "/track/#{track_id}", :key => @api_key,
+        req.url "/track/#{track_id}",
           :api_embed_codes => api_embed_codes
       end
       response.body.tracks[0]
@@ -35,7 +35,7 @@ module OfficialFM
     # @return [Hashie::Mash] User list
     def votes(track_id, api_max_responses=50)
       response = connection.get do |req|
-        req.url "/track/#{track_id}/votes", :key => @api_key,
+        req.url "/track/#{track_id}/votes",
           :api_embed_codes => api_embed_codes
       end
       response.body.users
@@ -51,7 +51,7 @@ module OfficialFM
     # @return [Hashie::Mash] Track list
     def charts(charting, genre=nil, country=nil, api_embed_codes=false, api_max_responses=200)
       response = connection.get do |req|
-        req.url "/tracks/charts", :key => @api_key,
+        req.url "/tracks/charts",
           :charting => charting, :genre => genre, :country => country,
           :api_embed_codes => api_embed_codes, :api_max_responses => api_max_responses
       end
@@ -67,7 +67,7 @@ module OfficialFM
     # @return [Hashie::Mash] Track list
     def latest(genre=nil, country=nil, api_embed_codes=false, api_max_responses=200)
       response = connection.get do |req|
-        req.url "/tracks/latest", :key => @api_key,
+        req.url "/tracks/latest",
           :genre => genre, :country => country,
           :api_embed_codes => api_embed_codes, :api_max_responses => api_max_responses
       end

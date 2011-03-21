@@ -3,7 +3,7 @@ require File.expand_path('../lib/officialfm/version', __FILE__)
 
 Gem::Specification.new do |s|
   s.name = 'officialfm'
-  s.version = Gowalla::VERSION
+  s.version = OfficialFM::VERSION
   s.authors = ["Amos Wenger"]
   s.email = ['ndd@rylliog.cz']
   s.summary = %q{Unofficial wrapper for the official.fm API}

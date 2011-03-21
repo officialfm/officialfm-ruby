@@ -7,7 +7,7 @@ module OfficialFM
     # @return [Hashie::Mash] User list
     def search(search_param)
       response = connection.get do |req|
-        req.url "/search/users/#{search_param}/tracks", :key => @api_key
+        req.url "/search/users/#{search_param}"
       end
       response.body.users
     end
@@ -18,7 +18,7 @@ module OfficialFM
     # @return [Hashie::Mash] User
     def show(user_id)
       response = connection.get do |req|
-        req.url "/user/#{user_id}/tracks", :key => @api_key
+        req.url "/user/#{user_id}/tracks"
       end
       response.body.users[0]
     end
@@ -31,7 +31,7 @@ module OfficialFM
     # @return [Hashie::Mash] Track list
     def tracks(user_id, api_embed_codes=nil, api_max_responses=50)
       response = connection.get do |req|
-        req.url "/user/#{user_id}/tracks", :key => @api_key,
+        req.url "/user/#{user_id}/tracks",
           :api_embed_codes => api_embed_codes, :api_max_responses => api_max_responses
       end
       response.body.tracks
@@ -45,7 +45,7 @@ module OfficialFM
     # @return [Hashie::Mash] Playlist list
     def playlists(user_id, api_embed_codes=nil, api_max_responses=50)
       response = connection.get do |req|
-        req.url "/user/#{user_id}/playlists", :key => @api_key,
+        req.url "/user/#{user_id}/playlists",
           :api_embed_codes => api_embed_codes, :api_max_responses => api_max_responses
       end
       response.body.playlists
@@ -58,7 +58,7 @@ module OfficialFM
     # @return [Hashie::Mash] User list
     def contacts(user_id, api_max_responses=50)
       response = connection.get do |req|
-        req.url "/user/#{user_id}/contacts", :key => @api_key,
+        req.url "/user/#{user_id}/contacts",
           :api_max_responses => api_max_responses
       end
       response.body.users
@@ -71,7 +71,7 @@ module OfficialFM
     # @return [Hashie::Mash] User list
     def subscribers(user_id, api_max_responses=50)
       response = connection.get do |req|
-        req.url "/user/#{user_id}/subscribers", :key => @api_key,
+        req.url "/user/#{user_id}/subscribers",
           :api_max_responses => api_max_responses
       end
       response.body.users
@@ -84,7 +84,7 @@ module OfficialFM
     # @return [Hashie::Mash] User list
     def subscriptions(user_id, api_max_responses=50)
       response = connection.get do |req|
-        req.url "/user/#{user_id}/subscriptions", :key => @api_key,
+        req.url "/user/#{user_id}/subscriptions",
           :api_max_responses => api_max_responses
       end
       response.body.users

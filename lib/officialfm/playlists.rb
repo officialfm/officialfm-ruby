@@ -7,7 +7,7 @@ module OfficialFM
     # @return [Hashie::Mash] Playlist list
     def search(search_param)
       response = connection.get do |req|
-        req.url "/search/playlists/#{search_param}/tracks", :key => @api_key
+        req.url "/search/playlists/#{search_param}"
       end
       response.body.playlists
     end
@@ -19,7 +19,7 @@ module OfficialFM
     # @return [Hashie::Mash] Playlist
     def show(playlist_id, api_embed_codes=nil)
       response = connection.get do |req|
-        req.url "/playlist/#{playlist_id}", :key => @api_key,
+        req.url "/playlist/#{playlist_id}",
           :api_embed_codes => api_embed_codes
       end
       response.body.playlists[0]
@@ -32,7 +32,7 @@ module OfficialFM
     # @return [Hashie::Mash] User list
     def votes(playlist_id, api_max_responses=50)
       response = connection.get do |req|
-        req.url "/playlist/#{playlist_id}/votes", :key => @api_key,
+        req.url "/playlist/#{playlist_id}/votes",
           :api_embed_codes => api_embed_codes
       end
       response.body.users
