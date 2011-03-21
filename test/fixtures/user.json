@@ -1,0 +1,22 @@
+[
+  {
+    "birthdate":null,
+    "city":null,
+    "comments_count":3,
+    "country_id":"US",
+    "created_at":"2007-08-26 01:51:32 UTC",
+    "dropbox":false,
+    "gender":null,
+    "id":3086,
+    "name":"chad",
+    "picture_absolute_url":"http://cdn.official.fm/user_avatars/3/3086_small.jpg",
+    "playlist_votes_count":0,
+    "playlists_count":0,
+    "pro":false,
+    "profile":"Hi, I\'m Chad.  I absolutely love music and movies.  I am in college, and plan to major in Advertising / Marketing / Public Relations.  Have a great day!",
+    "status":"member",
+    "tracks_count":0,
+    "url":"http://myspace.com/chadapp",
+    "votes_count":0
+  }
+]

@@ -19,7 +19,7 @@ module OfficialFM
     # @return [Hashie::Mash] User
     def user(user_id)
       response = connection.get do |req|
-        req.url "/user/#{user_id}/tracks"
+        req.url "/user/#{user_id}"
       end
       response.body[0]
     end
