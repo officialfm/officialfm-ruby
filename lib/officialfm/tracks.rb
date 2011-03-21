@@ -27,7 +27,7 @@ module OfficialFM
         req.url "/track/#{track_id}/votes", :key => @api_key,
           :api_embed_codes => api_embed_codes
       end
-      response.body.tracks[0]
+      response.body.users
     end
     
     # Retrieve 200 tracks of selected chart
@@ -44,7 +44,7 @@ module OfficialFM
           :charting => charting, :genre => genre, :country => country,
           :api_embed_codes => api_embed_codes, :api_max_responses => api_max_responses
       end
-      response.body.tracks[0]
+      response.body.tracks
     end
     
     # Retrieve 200 latest tracks
@@ -60,7 +60,7 @@ module OfficialFM
           :genre => genre, :country => country,
           :api_embed_codes => api_embed_codes, :api_max_responses => api_max_responses
       end
-      response.body.tracks[0]
+      response.body.tracks
     end
   
   end
