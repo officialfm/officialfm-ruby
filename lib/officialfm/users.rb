@@ -17,7 +17,7 @@ module OfficialFM
     # @param [String] user_id: id or login
     # @param [Bool] api_embed_codes (false) should embed codes be included in the response
     # @param [Integer] api_max_responses (50) limit per page
-    # @return [Hashie::Mash] stamps info
+    # @return [Hashie::Mash] Track list
     def tracks(user_id, api_embed_codes=nil, api_max_responses=50)
       response = connection.get do |req|
         req.url "/user/#{user_id}/tracks", :key => @api_key,
@@ -31,7 +31,7 @@ module OfficialFM
     # @param [String] user_id: id or login
     # @param [Bool] api_embed_codes (false) should embed codes be included in the response
     # @param [Integer] api_max_responses (50) limit per page
-    # @return [Hashie::Mash] stamps info
+    # @return [Hashie::Mash] Playlist list
     def playlists(user_id, api_embed_codes=nil, api_max_responses=50)
       response = connection.get do |req|
         req.url "/user/#{user_id}/playlists", :key => @api_key,
@@ -44,7 +44,7 @@ module OfficialFM
     #
     # @param [String] user_id: id or login
     # @param [Integer] api_max_responses (50) limit per page
-    # @return [Hashie::Mash] stamps info
+    # @return [Hashie::Mash] User list
     def contacts(user_id, api_max_responses=50)
       response = connection.get do |req|
         req.url "/user/#{user_id}/contacts", :key => @api_key,
@@ -57,7 +57,7 @@ module OfficialFM
     #
     # @param [String] user_id: id or login
     # @param [Integer] api_max_responses (50) limit per page
-    # @return [Hashie::Mash] stamps info
+    # @return [Hashie::Mash] User list
     def subscribers(user_id, api_max_responses=50)
       response = connection.get do |req|
         req.url "/user/#{user_id}/subscribers", :key => @api_key,
@@ -70,7 +70,7 @@ module OfficialFM
     #
     # @param [String] user_id: id or login
     # @param [Integer] api_max_responses (50) limit per page
-    # @return [Hashie::Mash] stamps info
+    # @return [Hashie::Mash] User list
     def subscriptions(user_id, api_max_responses=50)
       response = connection.get do |req|
         req.url "/user/#{user_id}/subscriptions", :key => @api_key,
