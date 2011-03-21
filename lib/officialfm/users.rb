@@ -4,12 +4,12 @@ module OfficialFM
     # Retrieve information about a specific user
     #
     # @param [String] user_id: id or login
-    # @return [Hashie::Mash] User list (with only one user)
+    # @return [Hashie::Mash] User
     def show(user_id)
       response = connection.get do |req|
         req.url "/user/#{user_id}/tracks", :key => @api_key
       end
-      response.body
+      response.body.users[0]
     end
 
     # Retrieve a list of the tracks of this user
