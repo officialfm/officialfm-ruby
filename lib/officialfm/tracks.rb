@@ -8,8 +8,8 @@ module OfficialFM
     #
     # @param [String] track_id: id
     # @param [Bool] api_embed_codes (false) should embed codes be included in the response
-    # @return [Hashie::Mash] Track list (with only one track)
-    def show(user_id, api_embed_codes=nil)
+    # @return [Hashie::Mash] Track
+    def show(track_id, api_embed_codes=nil)
       response = connection.get do |req|
         req.url "/track/#{track_id}", :key => @api_key,
           :api_embed_codes => api_embed_codes
@@ -22,7 +22,7 @@ module OfficialFM
     # @param [String] track_id: id
     # @param [Integer] api_max_responses (50) limit per page
     # @return [Hashie::Mash] User list
-    def votes(user_id, api_max_responses=50)
+    def votes(track_id, api_max_responses=50)
       response = connection.get do |req|
         req.url "/track/#{track_id}/votes", :key => @api_key,
           :api_embed_codes => api_embed_codes
@@ -38,9 +38,9 @@ module OfficialFM
     # @param [Bool] api_embed_codes (false) should embed codes be included in the response (optional)
     # @param [Integer] api_max_responses (200) limit per page (optional)
     # @return [Hashie::Mash] Track list
-    def charts(user_id, charting, genre=nil, country=nil, api_embed_codes=false, api_max_responses=200)
+    def charts(charting, genre=nil, country=nil, api_embed_codes=false, api_max_responses=200)
       response = connection.get do |req|
-        req.url "/tracks/#{track_id}/charts", :key => @api_key,
+        req.url "/tracks/charts", :key => @api_key,
           :charting => charting, :genre => genre, :country => country,
           :api_embed_codes => api_embed_codes, :api_max_responses => api_max_responses
       end
@@ -54,9 +54,9 @@ module OfficialFM
     # @param [Bool] api_embed_codes (false) should embed codes be included in the response (optional)
     # @param [Integer] api_max_responses (200) limit per page (optional)
     # @return [Hashie::Mash] Track list
-    def latest(user_id, charting, genre=nil, country=nil, api_embed_codes=false, api_max_responses=200)
+    def latest(genre=nil, country=nil, api_embed_codes=false, api_max_responses=200)
       response = connection.get do |req|
-        req.url "/tracks/#{track_id}/latest", :key => @api_key,
+        req.url "/tracks/latest", :key => @api_key,
           :genre => genre, :country => country,
           :api_embed_codes => api_embed_codes, :api_max_responses => api_max_responses
       end
