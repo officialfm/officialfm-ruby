@@ -18,8 +18,12 @@ Be sure and get your API key: [http://official.fm/developers/manage](http://offi
 
 #### Examples
 
-    officialfm.user('brad')
-    => 
+    officialfm.user('chab')
+    puts user.name
+
+    officialfm.tracks('Dare', {:limit => 10, :embed => false}).each |track| do
+      puts "#{track.name} by #{track.artist_string}"
+    end
 
 ## Note on Patches/Pull Requests
 
