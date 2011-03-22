@@ -6,7 +6,7 @@ module OfficialFM
     # @param [String] search_param: a search parameter (eg. name of the playlist)
     # @param [Integer] limit (50) limit per page (optional)
     # @return [Hashie::Mash] Playlist list
-    def playlists(search_param)
+    def playlists(search_param, options={})
       response = connection.get do |req|
         req.url "/search/playlists/#{search_param}",
           :api_max_responses => options[:limit]
