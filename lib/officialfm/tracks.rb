@@ -1,3 +1,5 @@
+require 'cgi'
+
 module OfficialFM
   module Tracks
   
@@ -8,7 +10,7 @@ module OfficialFM
     # @return [Hashie::Mash] Track list
     def tracks(search_param, options={})
       response = connection.get do |req|
-        req.url "/search/tracks/#{search_param}",
+        req.url "/search/tracks/#{CGI::escape(search_param)}",
           :api_max_responses => options[:limit]
       end
       response.body
@@ -22,9 +24,9 @@ module OfficialFM
     # @param [String] track_id: id
     # @param [Bool] embed (false) should embed codes be included in the response
     # @return [Hashie::Mash] Track
-    def show(track_id, options={})
+    def track(track_id, options={})
       response = connection.get do |req|
-        req.url "/track/#{track_id}",
+        req.url "/track/#{CGI::escape(track_id)}",
           :api_embed_codes => options[:embed]
       end
       response.body[0]
@@ -35,7 +37,7 @@ module OfficialFM
     # @param [String] track_id: id
     # @param [Integer] limit (50) limit per page
     # @return [Hashie::Mash] User list
-    def votes(track_id, options={})
+    def track_votes(track_id, options={})
       response = connection.get do |req|
         req.url "/track/#{track_id}/votes",
           :api_max_responses => options[:limit]
