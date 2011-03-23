@@ -12,7 +12,7 @@ Be sure and get your API key: [http://official.fm/developers/manage](http://offi
 
 ## Usage
 
-### Instantiate a client (Basic Auth)
+### Instantiate a client
 
     officialfm = OfficialFM::Client.new(:api_key => 'your_api_key')
 
@@ -24,6 +24,9 @@ Be sure and get your API key: [http://official.fm/developers/manage](http://offi
     officialfm.tracks('Dare', {:limit => 10, :embed => false}).each |track| do
       puts "#{track.name} by #{track.artist_string}"
     end
+    
+For a complete example of web-app using Sinatra in conjunction with
+this gem, see [ofmtweet](https://github.com/nddrylliog/ofmtweet).
 
 ## Note on Patches/Pull Requests
 
