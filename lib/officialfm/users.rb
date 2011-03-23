@@ -1,3 +1,5 @@
+require 'cgi'
+
 module OfficialFM
   module Users
 
@@ -8,7 +10,7 @@ module OfficialFM
     # @return [Hashie::Mash] User list
     def users(search_param, options={})
       response = connection.get do |req|
-        req.url "/search/users/#{search_param}", :api_max_responses => options[:limit]
+        req.url "/search/users/#{CGI::escape(search_param)}", :api_max_responses => options[:limit]
       end
       response.body
     end

@@ -26,7 +26,7 @@ module OfficialFM
     # @return [Hashie::Mash] Track
     def track(track_id, options={})
       response = connection.get do |req|
-        req.url "/track/#{CGI::escape(track_id)}",
+        req.url "/track/#{track_id}",
           :api_embed_codes => options[:embed]
       end
       response.body[0]
