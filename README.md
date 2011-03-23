@@ -28,6 +28,41 @@ Be sure and get your API key: [http://official.fm/developers/manage](http://offi
 For a complete example of web-app using Sinatra in conjunction with
 this gem, see [ofmtweet](https://github.com/nddrylliog/ofmtweet).
 
+## Additions to the original API
+
+### playlist.tracks
+
+For the time being, the structure of playlists in the JSON response of the official.fm
+server is:
+
+		{   
+				"tracks_count":4,
+				"tracks_list":"57854,40057,11290,12818",
+		}
+
+It'd be more convenient to have something like:
+
+		{   
+				"tracks": [ 57854, 40057, 11290, 12818 ],
+		}
+
+But until it's fixed, this gem emulates it, so you can still write pretty code like:
+
+    officialfm.playlists('R&B', :limit => 1)[0].tracks.do |track|
+			puts "  * #{officialfm.track(track).title}"
+		end
+
+### playlist.running\_time
+
+The original API has a `length` attribute in playlists, but unfortunately
+we can't use it from the Ruby side with Hashie, because it's already the number
+of fields of the hash (as I understand it).
+
+It can still be accessed with `playlist["length"]` but since it's not pretty,
+the gem allows you to access it like this:
+
+		puts "#{playlist.running_time}s of pure bliss"
+
 ## Note on Patches/Pull Requests
 
 * Fork the project.
@@ -44,3 +79,6 @@ this gem, see [ofmtweet](https://github.com/nddrylliog/ofmtweet).
 Copyright (c) 2011 Amos Wenger. See LICENSE for details.
 
 Based on [@pengwynn's Gowalla API wrapper](https://github.com/pengwynn/gowalla)
+
+A huge load of thanks to pengwynn for releasing it open-source! It was wonderful
+to work from his extra-clean codebase.
