@@ -1,0 +1,21 @@
+[
+  {
+    "birthdate":"1980-01-15",
+    "city":"Paris",
+    "comments_count":0,
+    "country_id":"FR",
+    "created_at":"2010-07-04 14:01:00 UTC",
+    "dropbox":false,
+    "gender":"male",
+    "id":69647,
+    "name":"VALERIAN",
+    "picture_absolute_url":"http://cdn.official.fm/user_avatars/69/69647_small.jpg",
+    "playlist_votes_count":11,
+    "playlists_count":0,
+    "pro":false,
+    "profile":"",
+    "status":"member",
+    "tracks_count":0,
+    "url":"",
+    "votes_count":537  }
+]

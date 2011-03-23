@@ -13,7 +13,8 @@ module OfficialFM
         req.url "/search/playlists/#{CGI::escape(search_param)}",
           :api_max_responses => options[:limit]
       end
-      response.body
+      
+      response.body.map do |pl| improve(pl) end
     end
   
     # Retrieve information about a specific playlist
@@ -23,10 +24,10 @@ module OfficialFM
     # @return [Hashie::Mash] Playlist
     def playlist(playlist_id, options={})
       response = connection.get do |req|
-        req.url "/playlist/#{CGI::escape(playlist_id)}",
+        req.url "/playlist/#{CGI::escape(playlist_id.to_s)}",
           :api_embed_codes => options[:embed]
       end
-      response.body[0]
+      improve(response.body[0])
     end
     
     # Retrieve users that have voted for this playlist
@@ -36,11 +37,19 @@ module OfficialFM
     # @return [Hashie::Mash] User list
     def playlist_votes(playlist_id, options={})
       response = connection.get do |req|
-        req.url "/playlist/#{CGI::escape(playlist_id)}/votes",
+        req.url "/playlist/#{playlist_id}/votes",
           :api_max_responses => options[:limit]
       end
       response.body
     end
-  
+    
+    def improve(playlist)
+      # the length field is already used. Note: running_time is in seconds
+      playlist.running_time = playlist["length"]
+      # Our own little hack to make it a lot easier to handle, until the API is improved.
+      playlist.tracks = playlist.tracks_list.split(',').map do |x| x.to_i end
+      playlist
+    end
+    
   end
 end
