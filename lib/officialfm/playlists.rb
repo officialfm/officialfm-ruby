@@ -24,7 +24,7 @@ module OfficialFM
     # @return [Hashie::Mash] Playlist
     def playlist(playlist_id, options={})
       response = connection.get do |req|
-        req.url "/playlist/#{CGI::escape(playlist_id.to_s)}",
+        req.url "/playlist/#{playlist_id}",
           :api_embed_codes => options[:embed]
       end
       improve(response.body[0])
@@ -32,7 +32,7 @@ module OfficialFM
     
     # Retrieve users that have voted for this playlist
     #
-    # @param [String] track_id: id
+    # @param [String] playlist_id: id
     # @param [Integer] limit (50) limit per page
     # @return [Hashie::Mash] User list
     def playlist_votes(playlist_id, options={})
