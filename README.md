@@ -1,6 +1,6 @@
 # official.fm
 
-Unofficial Ruby wrapper for the [official.fm Simple API](http://official.fm/developers).
+Ruby wrapper for the [official.fm Simple API](http://official.fm/developers).
 
 ## Installation
 
@@ -12,13 +12,18 @@ Be sure and get your API key: [http://official.fm/developers/manage](http://offi
 
 ## Usage
 
-### Instantiate a client
+### Include the relevant files
 
+    require 'rubygems'
+    require 'officialfm'
+
+### Instantiate a client
+    
     officialfm = OfficialFM::Client.new(:api_key => 'your_api_key')
 
 #### Examples
 
-    officialfm.user('chab')
+    user = officialfm.user('chab')
     puts user.name
 
     officialfm.tracks('Dare', {:limit => 10, :embed => false}).each |track| do
