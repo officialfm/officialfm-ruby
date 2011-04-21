@@ -1,5 +1,5 @@
 require 'faraday'
-require 'oauth2'
+#require 'oauth2'
 require 'faraday_middleware'
 
 directory = File.expand_path(File.dirname(__FILE__))
