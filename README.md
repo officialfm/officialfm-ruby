@@ -81,7 +81,9 @@ the gem allows you to access it like this:
 
 ## Copyright
 
-Copyright (c) 2011 Amos Wenger. See LICENSE for details.
+Copyright (c) 2011 Amos Wenger.
+
+This project is distributed under the New BSD License. See LICENSE for details.
 
 Based on [@pengwynn's Gowalla API wrapper](https://github.com/pengwynn/gowalla)
 
