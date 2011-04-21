@@ -5,15 +5,14 @@ Gem::Specification.new do |s|
   s.name = 'officialfm'
   s.version = OfficialFM::VERSION
   s.authors = ["Amos Wenger"]
-  s.email = ['ndd@rylliog.cz']
-  s.summary = %q{Unofficial wrapper for the official.fm API}
-  s.description = %q{Unofficial Ruby wrapper for the official.fm API}
-  s.homepage = 'http://github.com/nddrylliog/officialfm-ruby'
+  s.email = ['amos@official.fm']
+  s.summary = %q{Official Ruby bindings for the official.fm API}
+  s.description = %q{Official Ruby bindings for the official.fm API}
+  s.homepage = 'http://github.com/officialfm/officialfm-ruby'
 
   s.add_runtime_dependency 'faraday', '~> 0.5.3'
   s.add_runtime_dependency 'faraday_middleware', '~> 0.3.0'
   s.add_runtime_dependency 'hashie', '~> 1.0.0'
-  #s.add_runtime_dependency 'oauth2', '~> 0.1.0'
 
   s.add_development_dependency 'bundler', '~> 1.0'
   s.add_development_dependency 'fakeweb', '~> 1.3'
