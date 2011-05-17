@@ -42,6 +42,20 @@ module OfficialFM
       response.body
     end
     
+    # Retrieve a list of the tracks this user has voted for
+    #
+    # @param [String] user_id: id or login
+    # @param [Integer] limit (50) limit per page
+    # @param [Bool] embed (false) should embed codes be included in the response
+    # @return [Hashie::Mash] Track list
+    def voted_tracks(user_id, options={})
+      response = connection.get do |req|
+        req.url "/user/#{user_id}/voted_tracks",
+          :api_embed_codes => options[:embed], :api_max_responses => options[:limit]
+      end
+      response.body
+    end
+    
     # Retrieve a list of the playlists of this user
     #
     # @param [String] user_id: id or login
@@ -51,6 +65,20 @@ module OfficialFM
     def user_playlists(user_id, options={})
       response = connection.get do |req|
         req.url "/user/#{user_id}/playlists",
+          :api_embed_codes => options[:embed], :api_max_responses => options[:limit]
+      end
+      response.body
+    end
+    
+    # Retrieve a list of the playlists this user has voted for
+    #
+    # @param [String] user_id: id or login
+    # @param [Integer] limit (50) limit per page
+    # @param [Bool] embed (false) should embed codes be included in the response
+    # @return [Hashie::Mash] Playlist list
+    def voted_playlists(user_id, options={})
+      response = connection.get do |req|
+        req.url "/user/#{user_id}/voted_playlists",
           :api_embed_codes => options[:embed], :api_max_responses => options[:limit]
       end
       response.body
