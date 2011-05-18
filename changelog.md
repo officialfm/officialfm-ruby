@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.3 May 18, 2011
+  * Added support for voted_playlists and voted_tracks requests
+
 ## 0.0.2 April 21, 2011
   * s/Unofficial/Official, this gem is now endorsed by official.fm
   * Playlist IDs no longer escaped
