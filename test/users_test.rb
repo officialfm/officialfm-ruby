@@ -40,6 +40,7 @@ class UsersTest < Test::Unit::TestCase
       stub_get('http://api.official.fm/user/nddrylliog/voted_tracks?key=GNXbH3zYb25F1I7KVEEN&format=json&api_embed_codes=&api_max_responses=2', 'voted_tracks.json')
       tracks = @client.voted_tracks('nddrylliog', :limit => 2)
       tracks.size.should == 2
+      tracks[0].title.should == "QuelqueChosed'HasBeen"
     end
     
     should "retrieve the first two playlists of chab" do
@@ -52,8 +53,9 @@ class UsersTest < Test::Unit::TestCase
     
     should "retrieve the first two playlists bencolon has voted for" do
       stub_get('http://api.official.fm/user/bencolon/voted_playlists?key=GNXbH3zYb25F1I7KVEEN&format=json&api_embed_codes=&api_max_responses=2', 'voted_playlists.json')
-      tracks = @client.voted_playlists('bencolon', :limit => 2)
-      tracks.size.should == 2
+      playlists = @client.voted_playlists('bencolon', :limit => 2)
+      playlists.size.should == 2
+      playlists[1].id.should == 50195
     end
     
     should "retrieve the first two contacts of chab" do
