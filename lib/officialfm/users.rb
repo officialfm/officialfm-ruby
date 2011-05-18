@@ -25,8 +25,6 @@ module OfficialFM
       end
       response.body[0]
     end
-    
-    def users(search_term)
 
     # Retrieve a list of the tracks of this user
     #
@@ -125,3 +123,4 @@ module OfficialFM
 
   end
 end
+

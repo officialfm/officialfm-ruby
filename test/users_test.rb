@@ -35,13 +35,12 @@ class UsersTest < Test::Unit::TestCase
       tracks[0].title.should == 'Blind (Chab Remix)'
       tracks[0].artist_string.should == 'Hercules and Love Affair'
     end
-
     
-    #should "retrieve the first two tracks nddrylliog has voted for" do
-      #stub_get('http://api.official.fm/user/nddrylliog/voted_tracks?key=GNXbH3zYb25F1I7KVEEN&format=json&api_embed_codes=&api_max_responses=2', 'voted_tracks.json')
-      #tracks = @client.voted_tracks('nddrylliog', :limit => 2)
-      #tracks.size.should == 2
-   # end
+    should "retrieve the first two tracks nddrylliog has voted for" do
+      stub_get('http://api.official.fm/user/nddrylliog/voted_tracks?key=GNXbH3zYb25F1I7KVEEN&format=json&api_embed_codes=&api_max_responses=2', 'voted_tracks.json')
+      tracks = @client.voted_tracks('nddrylliog', :limit => 2)
+      tracks.size.should == 2
+    end
     
     should "retrieve the first two playlists of chab" do
       stub_get('http://api.official.fm/user/chab/playlists?key=GNXbH3zYb25F1I7KVEEN&format=json&api_embed_codes=&api_max_responses=2', 'user_playlists.json')
@@ -51,11 +50,11 @@ class UsersTest < Test::Unit::TestCase
       playlists[1].user_id.should == 8735 # chab's user id
     end
     
-    #should "retrieve the first two playlists nddrylliog has voted for" do
-      #stub_get('http://api.official.fm/user/nddrylliog/voted_playlists?key=GNXbH3zYb25F1I7KVEEN&format=json&api_embed_codes=&api_max_responses=2', 'voted_playlists.json')
-      #tracks = @client.voted_playlists('nddrylliog', :limit => 2)
-      #tracks.size.should == 2
-   # end
+    should "retrieve the first two playlists bencolon has voted for" do
+      stub_get('http://api.official.fm/user/bencolon/voted_playlists?key=GNXbH3zYb25F1I7KVEEN&format=json&api_embed_codes=&api_max_responses=2', 'voted_playlists.json')
+      tracks = @client.voted_playlists('bencolon', :limit => 2)
+      tracks.size.should == 2
+    end
     
     should "retrieve the first two contacts of chab" do
       stub_get('http://api.official.fm/user/chab/contacts?key=GNXbH3zYb25F1I7KVEEN&format=json&api_max_responses=2', 'user_contacts.json')
