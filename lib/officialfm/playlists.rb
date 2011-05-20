@@ -46,8 +46,6 @@ module OfficialFM
     def improve(playlist)
       # the length field is already used. Note: running_time is in seconds
       playlist.running_time = playlist["length"]
-      # Our own little hack to make it a lot easier to handle, until the API is improved.
-      playlist.tracks = playlist.tracks_list.split(',').map do |x| x.to_i end
       playlist
     end
     

@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.4 May 20, 2011
+  * Removed 'tracks' workaround, as the official API now includes it by default
+
 ## 0.0.3 May 18, 2011
   * Added support for voted_playlists and voted_tracks requests
 

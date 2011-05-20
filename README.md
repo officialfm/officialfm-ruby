@@ -35,28 +35,6 @@ this gem, see [ofmtweet](https://github.com/nddrylliog/ofmtweet).
 
 ## Additions to the original API
 
-### playlist.tracks
-
-For the time being, the structure of playlists in the JSON response of the official.fm
-server is:
-
-		{   
-				"tracks_count":4,
-				"tracks_list":"57854,40057,11290,12818",
-		}
-
-It'd be more convenient to have something like:
-
-		{   
-				"tracks": [ 57854, 40057, 11290, 12818 ],
-		}
-
-But until it's fixed, this gem emulates it, so you can still write pretty code like:
-
-    officialfm.playlists('R&B', :limit => 1)[0].tracks.do |track|
-			puts "  * #{officialfm.track(track).title}"
-		end
-
 ### playlist.running\_time
 
 The original API has a `length` attribute in playlists, but unfortunately
