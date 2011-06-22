@@ -1,92 +1,122 @@
 [
-  {
-    "comments_count":0,
-    "created_at":"2011-03-01 00:33:20 UTC",
-    "description":"",
-    "id":55569,
-    
-    "length":4167,
-    
-    "name":"HLSTRS – Timeless (Mixtape for HARTZINE)",
-    "picture_absolute_url":"http://cdn.official.fm/playlist_pictures/55/55569_small.jpg",
-    "plays_count":50,
-    "shuffle":false,
-    
-    
-    "tracks_count":16,
-    "tracks_list":"216372,216374,216378,216381,216384,216385,216388,216389,216392,216390,216395,216394,216396,216398,216400,216399",
-    "user_id":46269,
-    "votes_count":1  },
-  {
-    "comments_count":0,
-    "created_at":"2011-02-02 12:12:39 UTC",
-    "description":null,
-    "id":53202,
-    
-    "length":1575,
-    
-    "name":"MIXTAPE BOOTIE RIO NATAL",
-    "picture_absolute_url":"http://cdn.official.fm/playlist_pictures/53/53202_small.jpg",
-    "plays_count":4,
-    "shuffle":false,
-    
-    
-    "tracks_count":1,
-    "tracks_list":"183448",
-    "user_id":98816,
-    "votes_count":0  },
-  {
-    "comments_count":0,
-    "created_at":"2011-02-02 12:12:59 UTC",
-    "description":null,
-    "id":53203,
-    
-    "length":3768,
-    
-    "name":"MIXTAPE TEM GRINGO NO MASHUP",
-    "picture_absolute_url":"http://cdn.official.fm/playlist_pictures/53/53203_small.jpg",
-    "plays_count":1,
-    "shuffle":false,
-    
-    
-    "tracks_count":1,
-    "tracks_list":"178977",
-    "user_id":98816,
-    "votes_count":0  },
-  {
-    "comments_count":0,
-    "created_at":"2008-09-20 17:36:33 UTC",
-    "description":"",
-    "id":5801,
-    
-    "length":940,
-    
-    "name":"Rap",
-    "picture_absolute_url":"http://cdn.official.fm/playlist_pictures/5/5801_small.jpg",
-    "plays_count":3,
-    "shuffle":false,
-    
-    
-    "tracks_count":4,
-    "tracks_list":"57854,40057,11290,12818",
-    "user_id":6603,
-    "votes_count":0  },
-  {
-    "comments_count":0,
-    "created_at":"2011-01-24 14:25:27 UTC",
-    "description":"",
-    "id":52439,
-    
-    "length":1055,
-    
-    "name":"pop4",
-    "picture_absolute_url":"http://cdn.official.fm/playlist_pictures/52/52439_small.jpg",
-    "plays_count":1,
-    "shuffle":false,
-    
-    
-    "tracks_count":4,
-    "tracks_list":"24970,26036,26032,25520",
-    "user_id":51638,
-    "votes_count":0  }
+	  {
+  
+  "comments_count":0,
+  "created_at":"2011-03-01 00:33:20 UTC",
+  "description":"",
+  "id":55569,
+  
+  "length":4167,
+  
+  "name":"HLSTRS – Timeless (Mixtape for HARTZINE)",
+  "password":null,
+  "picture_absolute_url":"http://cdn.official.fm/playlist_pictures/55/55569_small.jpg",
+  "plays_count":74,
+  "private":false,
+  "shuffle":false,
+  
+  
+  "tracks":[216372,216374,216378,216381,216384,216385,216388,216389,216392,216390,216395,216394,216396,216398,216400,216399],
+  "tracks_count":16,
+  "tracks_list":"216372,216374,216378,216381,216384,216385,216388,216389,216392,216390,216395,216394,216396,216398,216400,216399",
+  "user_id":46269,
+  "votes_count":1
+}
+	  ,
+	  {
+  
+  "comments_count":0,
+  "created_at":"2011-06-11 06:12:57 UTC",
+  "description":null,
+  "id":64801,
+  
+  "length":1946,
+  
+  "name":"Guruguru",
+  "password":null,
+  "picture_absolute_url":"http://cdn.official.fm/track_pictures/252/252818_small.jpg",
+  "plays_count":0,
+  "private":false,
+  "shuffle":false,
+  
+  
+  "tracks":[252818],
+  "tracks_count":1,
+  "tracks_list":"252818",
+  "user_id":119997,
+  "votes_count":0
+}
+	  ,
+	  {
+  
+  "comments_count":0,
+  "created_at":"2011-02-02 12:12:39 UTC",
+  "description":null,
+  "id":53202,
+  
+  "length":1575,
+  
+  "name":"MIXTAPE BOOTIE RIO NATAL",
+  "password":null,
+  "picture_absolute_url":"http://cdn.official.fm/track_pictures/183/183448_small.jpg",
+  "plays_count":4,
+  "private":false,
+  "shuffle":false,
+  
+  
+  "tracks":[183448],
+  "tracks_count":1,
+  "tracks_list":"183448",
+  "user_id":98816,
+  "votes_count":0
+}
+	  ,
+	  {
+  
+  "comments_count":0,
+  "created_at":"2011-02-02 12:12:59 UTC",
+  "description":null,
+  "id":53203,
+  
+  "length":3768,
+  
+  "name":"MIXTAPE TEM GRINGO NO MASHUP",
+  "password":null,
+  "picture_absolute_url":"http://cdn.official.fm/track_pictures/178/178977_small.jpg",
+  "plays_count":2,
+  "private":false,
+  "shuffle":false,
+  
+  
+  "tracks":[178977],
+  "tracks_count":1,
+  "tracks_list":"178977",
+  "user_id":98816,
+  "votes_count":0
+}
+	  ,
+	  {
+  
+  "comments_count":0,
+  "created_at":"2008-09-20 17:36:33 UTC",
+  "description":"",
+  "id":5801,
+  
+  "length":940,
+  
+  "name":"Rap",
+  "password":null,
+  "picture_absolute_url":"http://cdn.official.fm/track_pictures/57/57854_small.jpg",
+  "plays_count":3,
+  "private":false,
+  "shuffle":false,
+  
+  
+  "tracks":[57854,40057,11290,12818],
+  "tracks_count":4,
+  "tracks_list":"57854,40057,11290,12818",
+  "user_id":6603,
+  "votes_count":0
+}
+	  
 ]

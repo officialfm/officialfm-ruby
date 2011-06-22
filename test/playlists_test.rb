@@ -12,7 +12,7 @@ class PlaylistsTests < Test::Unit::TestCase
       tracks = @client.playlists('R&B Mixtape', :limit => 5)
       tracks.length.should == 5
       tracks[0].running_time.should == 4167
-      tracks[3].tracks[1].should == 40057
+      tracks[4].tracks[3].should == 12818
     end
     
     should "get info on HLSTRS Timeless mixtape" do

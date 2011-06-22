@@ -1,4 +1,5 @@
 require 'faraday'
+require 'oauth2'
 require 'faraday_middleware'
 
 directory = File.expand_path(File.dirname(__FILE__))
@@ -7,10 +8,11 @@ module OfficialFM
 
   class << self
     attr_accessor :api_key
+    attr_accessor :api_secret
     attr_accessor :test_mode
 
     # Configures default credentials easily
-    # @yield [api_key]
+    # @yield [api_key, username, password]
     def configure
       yield self
       true
