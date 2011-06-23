@@ -1,8 +1,5 @@
 require 'forwardable'
 
-# Note: this gem only supports the Simple API, since the Advanced API
-# is still in development
-
 module OfficialFM
   class Client
     extend Forwardable
@@ -13,7 +10,7 @@ module OfficialFM
     
     attr_reader :api_key, :api_secret
 
-    def_delegators :web_server
+    def_delegators :oauth_client, :web_server, :authorize_url, :access_token_url
 
     def initialize(options={})
       @api_key = options[:api_key] || OfficialFM.api_key
@@ -70,13 +67,13 @@ module OfficialFM
         @oauth_client
       else
         conn ||= Faraday::Connection.new \
-          :url => "https://api.gowalla.com",
+          :url => "http://api.official.fm",
           :headers => default_headers
 
         oauth= OAuth2::Client.new(api_key, api_secret, oauth_options = {
-          :site => 'https://api.gowalla.com',
-          :authorize_url => 'https://gowalla.com/api/oauth/new',
-          :access_token_url => 'https://gowalla.com/api/oauth/token'
+          :site => 'http://api.official.fm',
+          :authorize_url => 'http://official.fm/oauth/authorize',
+          :access_token_url => 'http://official.fm/oauth/access_token'
         })
         oauth.connection = conn
         oauth
