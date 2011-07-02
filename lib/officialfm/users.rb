@@ -10,7 +10,7 @@ module OfficialFM
     # @return [Hashie::Mash] User list
     def users(search_param, options={})
       response = connection.get do |req|
-        req.url "/search/users/#{CGI::escape(search_param)}", :api_max_responses => options[:limit]
+        req.url "/search/users/#{CGI::escape(search_param)}", simple_params(options)
       end
       response.body
     end
@@ -21,7 +21,7 @@ module OfficialFM
     # @return [Hashie::Mash] User
     def user(user_id)
       response = connection.get do |req|
-        req.url "/user/#{user_id}"
+        req.url "/user/#{user_id}", simple_params
       end
       response.body[0]
     end
@@ -34,8 +34,7 @@ module OfficialFM
     # @return [Hashie::Mash] Track list
     def user_tracks(user_id, options={})
       response = connection.get do |req|
-        req.url "/user/#{user_id}/tracks",
-          :api_embed_codes => options[:embed], :api_max_responses => options[:limit]
+        req.url "/user/#{user_id}/tracks", simple_params(options)
       end
       response.body
     end
@@ -48,8 +47,7 @@ module OfficialFM
     # @return [Hashie::Mash] Track list
     def voted_tracks(user_id, options={})
       response = connection.get do |req|
-        req.url "/user/#{user_id}/voted_tracks",
-          :api_embed_codes => options[:embed], :api_max_responses => options[:limit]
+        req.url "/user/#{user_id}/voted_tracks", simple_params(options)
       end
       response.body
     end
@@ -62,8 +60,7 @@ module OfficialFM
     # @return [Hashie::Mash] Playlist list
     def user_playlists(user_id, options={})
       response = connection.get do |req|
-        req.url "/user/#{user_id}/playlists",
-          :api_embed_codes => options[:embed], :api_max_responses => options[:limit]
+        req.url "/user/#{user_id}/playlists", simple_params(options)
       end
       response.body
     end
@@ -76,8 +73,7 @@ module OfficialFM
     # @return [Hashie::Mash] Playlist list
     def voted_playlists(user_id, options={})
       response = connection.get do |req|
-        req.url "/user/#{user_id}/voted_playlists",
-          :api_embed_codes => options[:embed], :api_max_responses => options[:limit]
+        req.url "/user/#{user_id}/voted_playlists", simple_params(options)
       end
       response.body
     end
@@ -89,8 +85,7 @@ module OfficialFM
     # @return [Hashie::Mash] User list
     def user_contacts(user_id, options={})
       response = connection.get do |req|
-        req.url "/user/#{user_id}/contacts",
-          :api_max_responses => options[:limit]
+        req.url "/user/#{user_id}/contacts", simple_params(options)
       end
       response.body
     end
@@ -102,8 +97,7 @@ module OfficialFM
     # @return [Hashie::Mash] User list
     def user_subscribers(user_id, options={})
       response = connection.get do |req|
-        req.url "/user/#{user_id}/subscribers",
-          :api_max_responses => options[:limit]
+        req.url "/user/#{user_id}/subscribers", simple_params(options)
       end
       response.body
     end
@@ -115,8 +109,7 @@ module OfficialFM
     # @return [Hashie::Mash] User list
     def user_subscriptions(user_id, options={})
       response = connection.get do |req|
-        req.url "/user/#{user_id}/subscriptions",
-          :api_max_responses => options[:limit]
+        req.url "/user/#{user_id}/subscriptions", simple_params(options)
       end
       response.body
     end
@@ -133,6 +126,7 @@ module OfficialFM
     
       response = connection.post do |req|
         req.url '/user/profile'
+        req.body = { :format => @format }
       end
       response.body[0]
     end
@@ -145,6 +139,7 @@ module OfficialFM
       
       response = connection.post do |req|
         req.url '/user/tracks'
+        req.body = { :format => @format }
       end
       response
     end
@@ -157,6 +152,7 @@ module OfficialFM
       
       response = connection.post do |req|
         req.url '/user/dropbox'
+        req.body = { :format => @format }
       end
       response
     end
@@ -169,6 +165,7 @@ module OfficialFM
       
       response = connection.post do |req|
         req.url '/user/playlists'
+        req.body = { :format => @format }
       end
       response
     end
@@ -181,6 +178,7 @@ module OfficialFM
       
       response = connection.post do |req|
         req.url '/user/newsfeed'
+        req.body = { :format => @format }
       end
       response
     end
@@ -200,6 +198,7 @@ module OfficialFM
     
       response = connection.put do |req|
         req.url '/user/update', data
+        req.body = { :format => @format }
       end
       response
     end
@@ -212,7 +211,8 @@ module OfficialFM
       check_auth :subscribe
     
       response = connection.post  do |req|
-        req.url "/user/subscribe/#{user_id}", data
+        req.url "/user/subscribe/#{user_id}"
+        req.body = { :format => @format }
       end
       response
     end
@@ -225,7 +225,8 @@ module OfficialFM
       check_auth :unsubscribe
     
       response = connection.post  do |req|
-        req.url "/user/unsubscribe/#{user_id}", data
+        req.url "/user/unsubscribe/#{user_id}"
+        req.body = { :format => @format }
       end
       response
     end
@@ -239,7 +240,8 @@ module OfficialFM
       check_auth :picture
     
       response = connection.post  do |req|
-        req.url "/user/picture/", :file => Faraday::UploadIO.new(path, mime)
+        req.url "/user/picture"
+        req.body = { :file => Faraday::UploadIO.new(path, mime), :format => @format }
       end
       response
     end

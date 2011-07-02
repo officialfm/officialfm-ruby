@@ -7,7 +7,6 @@ module OfficialFM
     #
     # @return [Hash]
     def authentication
-      puts "token: #{@access_token}, token_secret: #{@access_secret}"
       {
         :consumer_key     => @api_key,
         :consumer_secret  => @api_secret,

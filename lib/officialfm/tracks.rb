@@ -10,8 +10,7 @@ module OfficialFM
     # @return [Hashie::Mash] Track list
     def tracks(search_param, options={})
       response = connection.get do |req|
-        req.url "/search/tracks/#{CGI::escape(search_param)}",
-          :api_max_responses => options[:limit]
+        req.url "/search/tracks/#{CGI::escape(search_param)}", simple_params(options)
       end
       response.body
     end
@@ -26,8 +25,7 @@ module OfficialFM
     # @return [Hashie::Mash] Track
     def track(track_id, options={})
       response = connection.get do |req|
-        req.url "/track/#{track_id}",
-          :api_embed_codes => options[:embed]
+        req.url "/track/#{track_id}", simple_params(options)
       end
       response.body[0]
     end
@@ -39,8 +37,7 @@ module OfficialFM
     # @return [Hashie::Mash] User list
     def track_votes(track_id, options={})
       response = connection.get do |req|
-        req.url "/track/#{track_id}/votes",
-          :api_max_responses => options[:limit]
+        req.url "/track/#{track_id}/votes", simple_params(options)
       end
       response.body
     end
@@ -55,9 +52,7 @@ module OfficialFM
     # @return [Hashie::Mash] Track list
     def charts(charting, options={})
       response = connection.get do |req|
-        req.url "/tracks/charts",
-          :charting => charting, :genre => options[:genre], :country => options[:country],
-          :api_embed_codes => options[:embed], :api_max_responses => options[:limit]
+        req.url "/tracks/charts", simple_params(options)
       end
       response.body
     end
@@ -71,9 +66,7 @@ module OfficialFM
     # @return [Hashie::Mash] Track list
     def latest(options={})
       response = connection.get do |req|
-        req.url "/tracks/latest", :genre => options[:genre],
-          :country => options[:country], :api_embed_codes => options[:embed],
-          :api_max_responses => options[:limit]
+        req.url "/tracks/latest", simple_params(options)
       end
       response.body
     end

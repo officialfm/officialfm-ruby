@@ -10,8 +10,7 @@ module OfficialFM
     # @return [Hashie::Mash] Playlist list
     def playlists(search_param, options={})
       response = connection.get do |req|
-        req.url "/search/playlists/#{CGI::escape(search_param)}",
-          :api_max_responses => options[:limit]
+        req.url "/search/playlists/#{CGI::escape(search_param)}", simple_params(options)
       end
       
       response.body.map do |pl| improve(pl) end
@@ -24,8 +23,7 @@ module OfficialFM
     # @return [Hashie::Mash] Playlist
     def playlist(playlist_id, options={})
       response = connection.get do |req|
-        req.url "/playlist/#{playlist_id}",
-          :api_embed_codes => options[:embed]
+        req.url "/playlist/#{playlist_id}", simple_params(options)
       end
       improve(response.body[0])
     end
@@ -37,8 +35,7 @@ module OfficialFM
     # @return [Hashie::Mash] User list
     def playlist_votes(playlist_id, options={})
       response = connection.get do |req|
-        req.url "/playlist/#{playlist_id}/votes",
-          :api_max_responses => options[:limit]
+        req.url "/playlist/#{playlist_id}/votes", simple_params(options)
       end
       response.body
     end

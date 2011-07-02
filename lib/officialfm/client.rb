@@ -27,22 +27,43 @@ module OfficialFM
       connection unless @access_token
     end
 
+    # GET request arguments for simple API calls
+    def simple_params (options = nil)
+      params = {
+        :key    => @api_key,
+        :format => @format,
+      }
+      if options
+          options.each { |key, value|
+            case key
+            when 'limit'
+              params['api_max_responses'] = value
+            when 'embed'
+              params['api_embed_codes'] = value
+            else
+              params[key] = value
+            end
+          }
+      end
+      params
+    end
+
     # Raw HTTP connection, either Faraday::Connection
     #
     # @return [Faraday::Connection]
     def connection
+      params = 
+    
       options = {
         :url => api_url,
-        :params => {
-          :key => @api_key,
-          :format => @format
-        },
         :headers => default_headers
       }
     
       @connection ||= Faraday.new(options) do |builder|
         builder.use Faraday::Request::OfficialFMOAuth, authentication if authenticated?
         builder.use Faraday::Request::Multipart
+        builder.use Faraday::Request::UrlEncoded
+        
         builder.use Faraday::Response::Mashify
         builder.use Faraday::Response::ParseJson
         builder.adapter Faraday.default_adapter
