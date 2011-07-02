@@ -70,6 +70,138 @@ module OfficialFM
       end
       response.body
     end
-  
+    
+    ####################################################################
+    ######################### Advanced API methods #####################
+    ####################################################################
+
+    # Update information of a given track
+    #
+    # @param [String] track_id: id
+    # @param [String] artist_name (optional)
+    # @param [String] buy_url (optional)
+    # @param [String] country_id (optional)
+    # @param [String] downloadable (optional)
+    # @param [String] derived_by (optional)
+    # @param [String] derived_type (optional)
+    # @param [String] description (optional)
+    # @param [String] isrc (optional)
+    # @param [String] label_name (optional)
+    # @param [String] label_none (optional)
+    # @param [String] license_type (optional)
+    # @param [String] lyrics (optional)
+    # @param [String] genre_string (optional)
+    # @param [String] original_track_id (optional)
+    # @param [String] password (optional)
+    # @param [String] pr_url (optional)
+    # @param [String] private (optional)
+    # @param [String] require_valid_email (optional)
+    # @param [String] tag_string (optional)
+    # @param [String] title (optional)
+    # @param [String] url_1_name (optional)
+    # @param [String] url_1 (optional)
+    # @param [String] url_2_name (optional)
+    # @param [String] url_2 (optional)
+    # @param [String] web_url (optional)
+    # @return [Hashie::Mash] Track
+    def update_track! (track_id, data = {})
+      check_auth :update_track
+    
+      response = connection.put do |req|
+        req.url "/track/update/#{track_id}", data
+        req.body = { :format => @format }
+      end
+      response
+    end
+    
+    # Upload a picture for a given track
+    #
+    # @param [String] track_id: id
+    # @param [String] path: path to a picture
+    # @param [String] mime: the mime-type of the picture (e.g. image/jpeg, image/png, etc.)
+    # @return [Hashie::Mash] Success or error message
+    def track_picture! (track_id, path, mime)
+      check_auth :track_picture
+    
+      response = connection.post  do |req|
+        req.url "/track/picture/#{track_id}"
+        req.body = { :file => Faraday::UploadIO.new(path, mime), :format => @format }
+      end
+      response
+    end
+    
+    # Vote for a track
+    #
+    # @param [String] track_id: id
+    # @return [Hashie::Mash] Success or error message
+    def track_vote! (track_id)
+      check_auth :track_vote
+    
+      response = connection.post  do |req|
+        req.url "/track/vote/#{track_id}"
+        req.body = { :format => @format }
+      end
+      response
+    end
+
+    # Remove vote for a track
+    #
+    # @param [String] track_id: id
+    # @return [Hashie::Mash] Success or error message
+    def track_unvote! (track_id)
+      check_auth :track_unvote
+    
+      response = connection.post  do |req|
+        req.url "/track/unvote/#{track_id}"
+        req.body = { :format => @format }
+      end
+      response
+    end
+    
+    # Add a track to a playlist
+    #
+    # @param [String] track_id: id
+    # @param [String] playlist_id: id
+    # @return [Hashie::Mash] Success or error message
+    def add_track_to_playlist! (track_id)
+      check_auth :add_track_to_playlist!
+    
+      response = connection.post  do |req|
+        req.url "/track/#{track_id}/addto/#{playlist_id}"
+        req.body = { :format => @format }
+      end
+      response
+    end
+
+    # Remove a track from a playlist
+    #
+    # @param [String] track_id: id
+    # @param [String] playlist_id: id
+    # @return [Hashie::Mash] Success or error message
+    def remove_track_from_playlist! (track_id)
+      check_auth :remove_track_from_playlist!
+    
+      response = connection.delete  do |req|
+        req.url "/track/#{track_id}/removefrom/#{playlist_id}"
+        req.body = { :format => @format }
+      end
+      response
+    end
+    
+    # Upload a new track to Official.fm
+    #
+    # @param [String] path: path to an mp3, 44.1Khz file
+    # @param [String] mime: the mime-type of the file (e.g. audio/mpeg, etc.)
+    # @return [Hashie::Mash] Track
+    def upload! (track_id, path, mime)
+      check_auth :upload
+    
+      response = connection.post  do |req|
+        req.url "/track/picture/#{track_id}"
+        req.body = { :file => Faraday::UploadIO.new(path, mime), :format => @format }
+      end
+      response
+    end
+
   end
 end

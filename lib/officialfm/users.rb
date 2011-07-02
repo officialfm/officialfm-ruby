@@ -193,7 +193,7 @@ module OfficialFM
     # @param [String] birthdate (optional)
     # @param [String] gender (optional)
     # @return [Hashie::Mash] User
-    def update! (data = {})
+    def update_profile! (data = {})
       check_auth :update
     
       response = connection.put do |req|

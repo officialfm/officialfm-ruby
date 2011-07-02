@@ -45,6 +45,101 @@ module OfficialFM
       playlist.running_time = playlist["length"]
       playlist
     end
+       
+    ####################################################################
+    ######################### Advanced API methods #####################
+    ####################################################################
+
+    # Update information of a given playlist
+    #
+    # @param [String] playlist_id: id
+    # @param [String] description (optional)
+    # @param [String] name (optional)
+    # @param [String] password (optional)
+    # @param [String] private (optional)
+    # @return [Hashie::Mash] Playlist
+    def update_playlist! (playlist_id, data = {})
+      check_auth :update_playlist
+    
+      response = connection.put do |req|
+        req.url "/playlist/update/#{playlist_id}", data
+        req.body = { :format => @format }
+      end
+      response
+    end
+    
+    # Upload a picture for a given playlist
+    #
+    # @param [String] playlist_id: id
+    # @param [String] path: path to a picture
+    # @param [String] mime: the mime-type of the picture (e.g. image/jpeg, image/png, etc.)
+    # @return [Hashie::Mash] Success or error message
+    def playlist_picture! (playlist_id, path, mime)
+      check_auth :playlist_picture
+    
+      response = connection.post  do |req|
+        req.url "/playlist/picture/#{playlist_id}"
+        req.body = { :file => Faraday::UploadIO.new(path, mime), :format => @format }
+      end
+      response
+    end
+    
+    # Remove a playlist
+    #
+    # @param [String] playlist_id: id
+    # @return [Hashie::Mash] Success or error message
+    def playlist_remove! (playlist_id)
+      check_auth :playlist_remove
+    
+      response = connection.delete  do |req|
+        req.url "/playlist/remove/#{playlist_id}"
+        req.body = { :format => @format }
+      end
+      response
+    end
+    
+    # Create a playlist
+    #
+    # @param [String] name: playlist name
+    # @param [String] track_id: first track id of the new playlist
+    # @return [Hashie::Mash] Playlist object
+    def playlist_create! (name, track_id)
+      check_auth :playlist_create
+    
+      response = connection.post  do |req|
+        req.url "/playlist/create"
+        req.body = { :format => @format, :name => name, :track_id => track_id }
+      end
+      response
+    end
+    
+    # Vote for a playlist
+    #
+    # @param [String] playlist_id: id
+    # @return [Hashie::Mash] Success or error message
+    def playlist_vote! (playlist_id)
+      check_auth :playlist_vote
+    
+      response = connection.delete  do |req|
+        req.url "/playlist/vote/#{playlist_id}"
+        req.body = { :format => @format }
+      end
+      response
+    end
+    
+    # Remote vote for a playlist
+    #
+    # @param [String] playlist_id: id
+    # @return [Hashie::Mash] Success or error message
+    def playlist_unvote! (playlist_id)
+      check_auth :playlist_unvote
+    
+      response = connection.delete  do |req|
+        req.url "/playlist/unvote/#{playlist_id}"
+        req.body = { :format => @format }
+      end
+      response
+    end
     
   end
 end
