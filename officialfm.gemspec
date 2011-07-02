@@ -1,32 +1,43 @@
 # -*- encoding: utf-8 -*-
 require File.expand_path('../lib/officialfm/version', __FILE__)
 
-Gem::Specification.new do |s|
-  s.name = 'officialfm'
-  s.version = OfficialFM::VERSION
-  s.authors = ["Amos Wenger"]
-  s.email = ['amos@official.fm']
-  s.summary = %q{Official Ruby bindings for the official.fm API}
-  s.description = %q{Official Ruby bindings for the official.fm API}
-  s.homepage = 'http://github.com/officialfm/officialfm-ruby'
+Gem::Specification.new do |gem|
+  gem.name = 'officialfm'
+  gem.version = OfficialFM::VERSION
+  gem.authors = ["Amos Wenger"]
+  gem.email = ['amos@official.fm']
+  gem.summary = %q{Official Ruby bindings for the official.fm API}
+  gem.description = %q{Official Ruby bindings for the official.fm API}
+  gem.post_install_message =<<eos
+********************************************************************************
 
-  s.add_runtime_dependency 'faraday', '~> 0.6'
-  s.add_runtime_dependency 'faraday_middleware', '~> 0.6'
-  s.add_runtime_dependency 'hashie', '~> 1.0.0'
-  s.add_runtime_dependency 'oauth2', '~> 0.4'
+  Follow @ofmdev on Twitter for announcements, updates, and news.
+  https://twitter.com/ofmdev
 
-  s.add_development_dependency 'bundler', '~> 1.0'
-  s.add_development_dependency 'fakeweb', '~> 1.3'
-  s.add_development_dependency 'jnunemaker-matchy', '~> 0.4'
-  s.add_development_dependency 'json_pure', '~> 1.5'
-  s.add_development_dependency 'rake', '~> 0.8'
-  s.add_development_dependency 'shoulda', '~> 2.11'
-  s.add_development_dependency 'test-unit', '~> 2.1'
+  Don't forget to get your API key here:
+  http://official.fm/developers/manager
 
-  s.required_rubygems_version = Gem::Requirement.new('>= 1.3.6') if s.respond_to? :required_rubygems_version=
-  s.platform = Gem::Platform::RUBY
-  s.require_paths = ['lib']
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{|f| File.basename(f)}
+********************************************************************************
+eos
+  gem.homepage = 'http://github.com/officialfm/officialfm-ruby'
+
+  gem.add_runtime_dependency 'faraday', '~> 0.6'
+  gem.add_runtime_dependency 'faraday_middleware', '~> 0.6'
+  gem.add_runtime_dependency 'hashie', '~> 1.0.0'
+  gem.add_runtime_dependency 'simple_oauth', '~> 0.1.5'
+
+  gem.add_development_dependency 'bundler', '~> 1.0'
+  gem.add_development_dependency 'fakeweb', '~> 1.3'
+  gem.add_development_dependency 'jnunemaker-matchy', '~> 0.4'
+  gem.add_development_dependency 'json_pure', '~> 1.5'
+  gem.add_development_dependency 'rake', '~> 0.8'
+  gem.add_development_dependency 'shoulda', '~> 2.11'
+  gem.add_development_dependency 'test-unit', '~> 2.1'
+
+  gem.required_rubygems_version = Gem::Requirement.new('>= 1.3.6') if gem.respond_to? :required_rubygems_version=
+  gem.platform = Gem::Platform::RUBY
+  gem.require_paths = ['lib']
+  gem.files         = `git ls-files`.split("\n")
+  gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  gem.executables   = `git ls-files -- bin/*`.split("\n").map{|f| File.basename(f)}
 end

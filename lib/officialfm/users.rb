@@ -120,6 +120,29 @@ module OfficialFM
       end
       response.body
     end
+    
+    ####################################################################
+    ######################### Advanced API methods #####################
+    ####################################################################
+
+    # Retrieve information about the logged in user
+    #
+    # @param [String] user_id: id or login
+    # @return [Hashie::Mash] User
+    def profile(user_id=nil)
+      check_ident :profile
+    
+      response = connection.post do |req|
+        req.url '/user/profile'
+      end
+      response.body[0]
+    end
+
+    private
+      
+    def check_ident(name)
+      raise "#{name} is an advanced API method - lacking OAuth credentials." unless authenticated?
+    end
 
   end
 end
