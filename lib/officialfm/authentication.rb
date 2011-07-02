@@ -22,5 +22,11 @@ module OfficialFM
     def authenticated?
       authentication[:token] != nil
     end
+    
+    private
+      
+    def check_auth(name)
+      raise "#{name} is an advanced API method - lacking OAuth credentials." unless authenticated?
+    end
   end
 end

@@ -42,6 +42,7 @@ module OfficialFM
     
       @connection ||= Faraday.new(options) do |builder|
         builder.use Faraday::Request::OfficialFMOAuth, authentication if authenticated?
+        builder.use Faraday::Request::Multipart
         builder.use Faraday::Response::Mashify
         builder.use Faraday::Response::ParseJson
         builder.adapter Faraday.default_adapter
