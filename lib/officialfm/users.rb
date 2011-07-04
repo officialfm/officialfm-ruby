@@ -197,8 +197,8 @@ module OfficialFM
       check_auth :update
     
       response = connection.put do |req|
-        req.url '/user/update', data
-        req.body = { :format => @format }
+        req.url '/user/update'
+        req.body = { :format => @format }.merge(data)
       end
       response
     end

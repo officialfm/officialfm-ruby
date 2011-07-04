@@ -1,6 +1,7 @@
 require 'forwardable'
 require 'faraday/request/officialfm_oauth'
 require 'officialfm/authentication'
+require 'officialfm/version'
 
 module OfficialFM
   class Client
