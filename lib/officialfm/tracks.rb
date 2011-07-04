@@ -197,7 +197,7 @@ module OfficialFM
       check_auth :upload
     
       response = connection.post  do |req|
-        req.url "/track/picture/#{track_id}"
+        req.url "/track/upload/#{track_id}"
         req.body = { :file => Faraday::UploadIO.new(path, mime), :format => @format }
       end
       response
