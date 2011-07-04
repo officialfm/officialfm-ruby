@@ -193,11 +193,11 @@ module OfficialFM
     # @param [String] path: path to an mp3, 44.1Khz file
     # @param [String] mime: the mime-type of the file (e.g. audio/mpeg, etc.)
     # @return [Hashie::Mash] Track
-    def upload! (track_id, path, mime)
+    def upload! (path, mime)
       check_auth :upload
     
       response = connection.post  do |req|
-        req.url "/track/upload/#{track_id}"
+        req.url "/track/upload"
         req.body = { :file => Faraday::UploadIO.new(path, mime), :format => @format }
       end
       response
