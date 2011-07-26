@@ -120,7 +120,7 @@ module OfficialFM
     def playlist_vote! (playlist_id)
       check_auth :playlist_vote
     
-      response = connection.delete  do |req|
+      response = connection.post  do |req|
         req.url "/playlist/vote/#{playlist_id}"
         req.body = { :format => @format }
       end
@@ -134,7 +134,7 @@ module OfficialFM
     def playlist_unvote! (playlist_id)
       check_auth :playlist_unvote
     
-      response = connection.delete  do |req|
+      response = connection.post  do |req|
         req.url "/playlist/unvote/#{playlist_id}"
         req.body = { :format => @format }
       end
