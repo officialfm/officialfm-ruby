@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.1 Aug 03, 2011
+  * Missing parameter in add_track_to_playlist and remove_track_from_playlist - fixed
+
 ## 0.1.0 Aug 03, 2011
   * Advanced API is now fully supported, see docs here: http://official.fm/developers/advanced
   * OAuth sign-in demo can be found here: https://github.com/officialfm/sign-in-with-officialfm-ruby
