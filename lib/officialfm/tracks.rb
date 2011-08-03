@@ -163,7 +163,7 @@ module OfficialFM
     # @param [String] track_id: id
     # @param [String] playlist_id: id
     # @return [Hashie::Mash] Success or error message
-    def add_track_to_playlist! (track_id)
+    def add_track_to_playlist! (track_id, playlist_id)
       check_auth :add_track_to_playlist!
     
       response = connection.post  do |req|
@@ -178,7 +178,7 @@ module OfficialFM
     # @param [String] track_id: id
     # @param [String] playlist_id: id
     # @return [Hashie::Mash] Success or error message
-    def remove_track_from_playlist! (track_id)
+    def remove_track_from_playlist! (track_id, playlist_id)
       check_auth :remove_track_from_playlist!
     
       response = connection.delete  do |req|
