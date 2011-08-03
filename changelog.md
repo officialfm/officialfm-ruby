@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.0 Aug 03, 2011
+  * Advanced API is now fully supported, see docs here: http://official.fm/developers/advanced
+  * OAuth sign-in demo can be found here: https://github.com/officialfm/sign-in-with-officialfm-ruby
+
 ## 0.0.4 May 20, 2011
   * Removed 'tracks' workaround, as the official API now includes it by default
 
